@@ -1,4 +1,6 @@
 Octubre::Application.routes.draw do
+  resources :games
+
   resources :users
   root to: "users#new"
 
