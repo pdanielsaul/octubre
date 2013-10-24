@@ -4,7 +4,7 @@
   <strong>Name:</strong>
   <%= @game.name %>
 </p>
-<%= image_tag painting.image_url(:thumb) if painting.image? %>
+<%= image_tag game.image_url(:thumb) if game.image? %>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
