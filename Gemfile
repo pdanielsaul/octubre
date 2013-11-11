@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem "carrierwave"
 gem "rmagick"
 gem "mini_magick"
-gem 'protected_attributes'
+gem "select2-rails"
+gem "jquery-rails"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
