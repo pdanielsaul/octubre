@@ -1,21 +1,32 @@
-$(function() {
+var wordlist= [ "about", "above", "across", "after", "against",
+    "along", "among", "around", "at", "before",
+    "behind", "below", "beneath", "beside", "between",
+    "beyond", "but", "by", "despite", "down", "during",
+    "except", "for", "from", "in", "inside", "into",
+    "like", "near", "of", "off", "on", "onto", "out",
+    "outside", "over", "past", "since", "through",
+    "throughout", "till", "to", "toward", "under",
+    "underneath", "until", "up", "upon", "with",
+    "within", "without"] ;
 
-    $("#topic_title").autocomplete({
-        source: "/users.json",
-        minLength: 1,
-        select: function(event, ui) {
-            var url = ui.item.id;
-            if(url != '#') {
-                location.href = '/users/' + url;
-            }
-        },
- 
-        html: true, // optional (jquery.ui.autocomplete.html.js required)
-
-      // optional (if other layers overlap autocomplete list)
-        open: function(event, ui) {
-            $(".ui-autocomplete").css("z-index", 1000);
-        }
-    });
- 
+$("input1").autocomplete({
+    // The source option can be an array of terms.  In this case, if
+    // the typed characters appear in any position in a term, then the
+    // term is included in the autocomplete list.
+    // The source option can also be a function that performs the search,
+    // and calls a response function with the matched entries.
+    source: function(req, responseFn) {
+        var re = $.ui.autocomplete.escapeRegex(req.term);
+        var matcher = new RegExp( "^" + re, "i" );
+        var a = $.grep( wordlist, function(item,index){
+            return matcher.test(item);
+        });
+        responseFn( a );
+    }
 });
+
+
+
+
+
+
